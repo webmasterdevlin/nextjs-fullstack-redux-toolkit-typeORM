@@ -14,7 +14,6 @@ const FormSubmission = ({ handleCreateAction }: Props) => {
   return (
     <Formik
       initialValues={{
-        id: "",
         firstName: "",
         lastName: "",
         house: "",
