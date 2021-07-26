@@ -79,7 +79,7 @@ const HeroesPage = () => {
                 </Button>{" "}
                 <Button
                   className={classes.button}
-                  onClick={() => dispatch(deleteHeroAction(h.id))}
+                  onClick={async () => await dispatch(deleteHeroAction(h.id))}
                   variant={"outlined"}
                   color={"primary"}
                   data-testid={"delete-button"}
@@ -97,7 +97,7 @@ const HeroesPage = () => {
           className={classes.button}
           variant={"contained"}
           color={"primary"}
-          onClick={() => dispatch(getHeroesAction())}
+          onClick={async () => await dispatch(getHeroesAction())}
         >
           Re-fetch
         </Button>
