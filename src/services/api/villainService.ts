@@ -1,4 +1,3 @@
-import boom from "@hapi/boom";
 import { getRepository } from "typeorm";
 
 import { VillainEntity } from "src/models/api/villainEntity";
@@ -8,7 +7,7 @@ export const villainFind = async (): Promise<VillainEntity[]> => {
     let db = getRepository(VillainEntity);
     return await db.find();
   } catch (e) {
-    throw boom.boomify(e);
+    throw e;
   }
 };
 
@@ -17,7 +16,7 @@ export const villainFindByIdAndRemove = async (id: string): Promise<void> => {
     let db = getRepository(VillainEntity);
     await db.delete({ id });
   } catch (e) {
-    throw boom.boomify(e);
+    throw e;
   }
 };
 
@@ -28,8 +27,7 @@ export const villainSave = async (
     let db = getRepository(VillainEntity);
     return await db.save(body);
   } catch (e) {
-    console.log(e);
-    throw boom.boomify(e);
+    throw e;
   }
 };
 
@@ -46,7 +44,7 @@ export const villainFindByIdAndUpdate = async (
     // based on TypeORM's docs use db.save instead of db.update
     await db.save(updated);
   } catch (e) {
-    boom.boomify(e);
+    throw e;
   }
 };
 
@@ -55,6 +53,6 @@ export const villainFindById = async (id: string): Promise<VillainEntity> => {
     let db = getRepository(VillainEntity);
     return await db.findOne({ id });
   } catch (e) {
-    boom.boomify(e);
+    throw e;
   }
 };
